@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>日払い申請：振込金額計算</title>
+    <style>
+        body {
+            font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 40%;
+            margin: 100px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 40px;
+        }
+        p {
+            font-size: 16px;
+            color: #555555;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        input[type="submit"], button[type="submit"] {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover, button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #28a745;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 80%;
+                margin: 50px auto;
+            }
+        }
+    </style>
+    <script>
+        function showDownloadMessage() {
+            // メッセージを表示
+            document.getElementById('download-message').style.display = 'block';
+            // フォームの送信を許可
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>CSVアップローダー</h1>
+        <form method="post" enctype="multipart/form-data" onsubmit="return showDownloadMessage();">
+            <p>CSVファイルをアップロードしてください。</p>
+            <input type="file" name="input_csv" accept=".csv" required>
+            <input type="submit" value="アップロード">
+            <p id="download-message" class="message" style="display: none;">ダウンロードしています。</p>
+        </form>
+    </div>
+</body>
+</html>
