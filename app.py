@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file, render_template
 import csv
 import io
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -71,7 +72,7 @@ def index():
             io.BytesIO(output_csv_io.getvalue().encode('utf-8-sig')),
             mimetype='text/csv',
             as_attachment=True,
-            download_name='output.csv'
+            download_name=f'output_{datetime.now().strftime("%Y%m%d%H%M%S")}_日払申請振込額.csv'
         )
     else:
         return render_template('index.html')
